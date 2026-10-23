@@ -91,8 +91,8 @@ All synthetic (`samples/`): 6 phishing-style, 3 benign, including French and Tha
 
 ## Notes / what didn't work
 
-- The LLM call kept failing with HTTP 403 from one provider while the same request worked with `requests`. Cause: the
-  default `Python-urllib` User-Agent was being blocked. Now sends `phish-triage/0.1`.
+- The LLM call failed with HTTP 403 (Cloudflare error 1010) against the OpenAI-compatible gateway I tested with, while the
+  same request worked from `requests`. Cause: the default `Python-urllib` User-Agent gets bot-blocked. Now sends `phish-triage/0.1`.
 - Risky-TLD check only looked at links at first, so `service@paypa1-support.xyz` didn't count. Added a sender check.
 - The French and Thai samples were flagged on headers alone; the content rules found nothing in them (English-only
   word lists). Added FR/TH phrase lists, written while looking at those two samples, so that part is tuned, not tested.
