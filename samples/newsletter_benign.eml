@@ -1,0 +1,12 @@
+From: "Example News" <news@example.com>
+To: you@example.com
+Subject: This week in open-source AI
+Authentication-Results: mx.example.com; spf=pass; dkim=pass; dmarc=pass
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html><body>
+<p>Hi! Here are this week's highlights from the community.</p>
+<p><a href="https://www.example.com/articles/small-models">Read: why small models matter</a></p>
+<p><a href="https://www.example.com/unsubscribe">Unsubscribe</a></p>
+</body></html>

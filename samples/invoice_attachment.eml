@@ -1,0 +1,19 @@
+From: "Accounts" <billing@vendor-invoices.example.net>
+To: you@example.com
+Subject: Invoice #4471 overdue - final notice
+Authentication-Results: mx.example.com; spf=softfail; dkim=pass; dmarc=none
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="XYZ"
+
+--XYZ
+Content-Type: text/plain; charset=utf-8
+
+Hello, please find the overdue invoice attached. Payment failed twice, pay immediately to avoid penalties.
+Details: https://bit.ly/3inv-4471
+
+--XYZ
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename="Invoice_4471.pdf.exe"
+
+AAAA
+--XYZ--

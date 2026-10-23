@@ -1,0 +1,8 @@
+From: "Nadia" <nadia@example.org>
+To: you@example.com
+Subject: Lunch on Thursday?
+Authentication-Results: mx.example.org; spf=pass; dkim=pass; dmarc=pass
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Hey, are you free for lunch Thursday? The new place near the office looks good: https://www.example.org/menu
