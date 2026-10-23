@@ -1,0 +1,13 @@
+From: "ธนาคาร แจ้งเตือนความปลอดภัย" <alert@secure-bank-th.click>
+To: you@example.com
+Subject: บัญชีของคุณถูกระงับชั่วคราว
+Authentication-Results: mx.example.com; spf=softfail; dkim=none; dmarc=fail
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html><body>
+<p>เรียนลูกค้า</p>
+<p>ระบบตรวจพบการเข้าสู่ระบบที่ผิดปกติ บัญชีของคุณถูกระงับชั่วคราว กรุณายืนยันตัวตนภายใน 24 ชั่วโมง</p>
+<p><a href="http://203.0.113.45/verify">ยืนยันตัวตน</a></p>
+<p>กรุณากรอกรหัสผ่านและรหัส OTP เพื่อปลดล็อกบัญชี</p>
+</body></html>

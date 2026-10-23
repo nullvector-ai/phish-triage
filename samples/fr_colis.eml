@@ -1,0 +1,14 @@
+From: "Service Livraison" <notification@suivi-colis-fr.top>
+Reply-To: support@livraison-aide.xyz
+To: you@example.com
+Subject: Votre colis est en attente - action requise
+Authentication-Results: mx.example.com; spf=fail; dkim=none; dmarc=fail
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+
+<html><body>
+<p>Bonjour,</p>
+<p>Votre colis n'a pas pu être livré. Des frais de réexpédition de 1,99 EUR sont à régler sous 24 heures,
+sinon le colis sera retourné à l'expéditeur.</p>
+<p><a href="https://bit.ly/colis-fr-221">Confirmer vos coordonnées bancaires</a></p>
+</body></html>

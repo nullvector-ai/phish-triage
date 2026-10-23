@@ -1,0 +1,9 @@
+From: "Julien" <julien@example.org>
+To: you@example.com
+Subject: Compte rendu de la réunion
+Authentication-Results: mx.example.org; spf=pass; dkim=pass; dmarc=pass
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Salut, voici le compte rendu de la réunion de ce matin : https://www.example.org/notes/reunion
+On se recale la semaine prochaine.
