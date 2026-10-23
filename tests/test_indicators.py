@@ -41,3 +41,10 @@ def test_score_thresholds():
 def test_injection_sample_still_phishing(sample):
     inds = analyse(parse_email(sample("injection_in_body.eml")))
     assert score(inds)[1] == "phishing"
+
+
+def test_french_and_thai_content_rules(sample):
+    for f in ["fr_colis.eml", "th_bank.eml"]:
+        n = names(sample(f))
+        assert {"urgency_language", "credential_request"} <= n, (f, n)
+    assert score(analyse(parse_email(sample("fr_benign.eml"))))[1] == "likely_benign"

@@ -18,6 +18,13 @@ URGENCY = re.compile(
     r"\b(urgent|immediately|within 24 hours|account (will be )?(suspended|locked|closed)|verify your (account|identity)|"
     r"unusual (sign-in|activity)|final notice|action required|confirm your (password|details)|payment failed|"
     r"you have won|claim your|gift card)\b", re.I)
+# French and Thai lures. Thai has no spaces between words, so these are plain substrings, no \b.
+URGENCY_FR = re.compile(
+    r"\b(action requise|sous 24 ?heures|imm[ée]diatement|compte (sera )?(suspendu|bloqu[ée]|ferm[ée])|"
+    r"v[ée]rifie[rz]? votre (compte|identit[ée])|dernier avis|frais de (r[ée]exp[ée]dition|livraison)|colis (en attente|bloqu[ée]))", re.I)
+URGENCY_TH = re.compile(r"ถูกระงับ|ภายใน 24 ชั่วโมง|ยืนยันตัวตน|ด่วน|การเข้าสู่ระบบที่ผิดปกติ|บัญชีของคุณถูกล็อก")
+CREDENTIAL_FR = re.compile(r"\b(mot de passe|coordonn[ée]es bancaires|num[ée]ro de carte|code de s[ée]curit[ée]|identifiants)\b", re.I)
+CREDENTIAL_TH = re.compile(r"รหัสผ่าน|รหัส OTP|เลขบัตร|ข้อมูลบัตรเครดิต")
 CREDENTIAL_ASK = re.compile(r"\b(password|passcode|one-time code|otp|ssn|credit card|card number|cvv|seed phrase|login details)\b", re.I)
 
 
@@ -71,10 +78,10 @@ def analyse(mail: ParsedEmail) -> list[Indicator]:
 
     # --- content checks ---
     blob = f"{mail.subject} {mail.text}"
-    urg = sorted({m.group(0).lower() for m in URGENCY.finditer(blob)})
+    urg = sorted({m.group(0).lower() for rx in (URGENCY, URGENCY_FR, URGENCY_TH) for m in rx.finditer(blob)})
     if urg:
         out.append(Indicator("urgency_language", min(2.0, 0.75 * len(urg)), "phrases: " + ", ".join(urg[:5])))
-    cred = sorted({m.group(0).lower() for m in CREDENTIAL_ASK.finditer(blob)})
+    cred = sorted({m.group(0).lower() for rx in (CREDENTIAL_ASK, CREDENTIAL_FR, CREDENTIAL_TH) for m in rx.finditer(blob)})
     if cred:
         out.append(Indicator("credential_request", 1.5, "mentions: " + ", ".join(cred[:5])))
 
